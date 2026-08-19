@@ -1,5 +1,6 @@
 import GLightbox from 'glightbox';
 
+import HeroScroll from './components/HeroScroll.js';
 import HeroVideo from './components/HeroVideo.js';
 import ImageSliderSection from './components/ImageSliderSection.js';
 import Navbar from './components/Navbar.js';
@@ -19,6 +20,7 @@ class Core {
 		new Testimonials();
 		new PostToc();
 		new SortComponent();
+		new HeroScroll();
 		new HeroVideo();
 		new ProductCard();
 		new OfferSliderSection();

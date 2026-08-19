@@ -67,11 +67,60 @@
 		width: 1px;
 	}
 
-	&__actions {
+	&__scroll {
 		align-items: center;
+		background: none;
+		border: 0;
+		color: $c-white;
+		cursor: pointer;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
+		flex-direction: column;
+		gap: 12px;
+		padding: 10px;
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+
+		&:focus-visible {
+			outline: 2px solid $c-focus;
+			outline-offset: 4px;
+		}
+	}
+
+	&__scrollLabel {
+		font-size: 13px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+
+	&__scrollIcon {
+		align-items: center;
+		animation: heroScrollPulse 2s ease-in-out infinite;
+		border: 2px solid $c-white;
+		border-radius: 50%;
+		display: flex;
+		filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
+		height: 44px;
 		justify-content: center;
+		width: 44px;
+	}
+}
+
+@keyframes heroScrollPulse {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 $c-white-40;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	50% {
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+		opacity: 0.7;
+		transform: translateY(6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero__scrollIcon {
+		animation: none;
 	}
 }

@@ -12,7 +12,6 @@ if (isset($block) || isset($args)) :
 		$heading_text = get_field('heading_text');
 		$heading_type = get_field('heading_type');
 		$text = get_field('text');
-		$buttons = get_field('buttons_buttons');
 	} else {
 		$id = 'hero-' . uniqid();
 		$is_active = $args['is_active'];
@@ -22,7 +21,6 @@ if (isset($block) || isset($args)) :
 		$heading_text = $args['heading_text'];
 		$heading_type = $args['heading_type'];
 		$text = $args['text'];
-		$buttons = $args['buttons_buttons'];
 	}
 	if (!empty($anchor_name)) {
 		$id = $anchor_name;
@@ -67,13 +65,14 @@ if (isset($block) || isset($args)) :
 							<?= $text ?>
 						</div>
 					<?php endif ?>
-					<?php if (!empty($buttons)) : ?>
-						<div class="hero__actions">
-							<?php foreach ($buttons as $button) : ?>
-								<?php (new CodeUnion)->getLink($button['link'], 'button button--' . $button['color_scheme']) ?>
-							<?php endforeach ?>
-						</div>
-					<?php endif ?>
+					<button type="button" class="hero__scroll" data-hero-scroll>
+						<span class="hero__scrollLabel">Przewiń w dół</span>
+						<span class="hero__scrollIcon">
+							<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</span>
+					</button>
 				</div>
 			</div>
 		</section>
