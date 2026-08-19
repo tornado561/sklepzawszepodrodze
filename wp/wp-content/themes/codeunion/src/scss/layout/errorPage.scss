@@ -1,0 +1,38 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.errorPage {
+	background: $c-white;
+
+	&__wrapper {
+	}
+
+	&__helper {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 70vh;
+		text-align: center;
+	}
+
+	&__subHeading {
+		color: $c-primary;
+		margin-bottom: 10px;
+
+		@include fontSet(8rem, $fw-ExtraBold, 8rem);
+	}
+
+	&__heading {
+		margin-bottom: 20px;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__text {
+		@include wysiwygContent();
+		@include textContent();
+	}
+}

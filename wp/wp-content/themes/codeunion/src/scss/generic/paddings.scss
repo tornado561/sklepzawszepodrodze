@@ -1,0 +1,40 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.pt {
+	&__sm {
+		padding-top: 30px;
+	}
+
+	&__md {
+		padding-top: 60px;
+	}
+
+	&__lg {
+		padding-top: 120px;
+	}
+}
+
+.pb {
+	&__sm {
+		padding-bottom: 30px;
+	}
+
+	&__md {
+		padding-bottom: 60px;
+	}
+
+	&__lg {
+		padding-bottom: 120px;
+	}
+}
+
+.blogPb {
+	&__md {
+		padding-bottom: 30px;
+	}
+
+	&__lg {
+		padding-bottom: 60px;
+	}
+}

@@ -1,0 +1,146 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.product-card {
+	background-color: $c-light;
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	flex-basis: calc(25% - 20px);
+	min-height: 369px;
+	padding: 20px;
+	perspective: 1000px;
+	position: relative;
+	transition: padding 0.3s ease-in-out;
+	width: 100%;
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		margin-top: 30px;
+		position: relative;
+		transform-style: preserve-3d;
+		transition: transform 0.6s;
+		width: 100%;
+	}
+
+	&.is-flipped {
+		padding: 10px;
+		transition: padding 0.3s ease-in-out;
+
+		.product-card__inner {
+			margin-top: 0;
+			transform: rotateY(180deg);
+		}
+	}
+
+	@include rwd('tablet-xl') {
+		flex-basis: calc(50% - 20px);
+	}
+
+	@include rwd('phone-xxl') {
+		flex-basis: calc(100% - 20px);
+	}
+
+	&__side {
+		backface-visibility: hidden;
+		border-radius: 12px;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		&--front {
+			position: relative;
+			z-index: 2;
+		}
+
+		&--back {
+			background-color: $c-white;
+			border: 2px solid #eae5d8;
+			justify-content: flex-start;
+			left: 0;
+			padding: 20px 15px;
+			position: absolute;
+			top: 0;
+			transform: rotateY(180deg);
+			width: 100%;
+		}
+	}
+
+	&__stock {
+		border-radius: 8px;
+		color: $c-white;
+		font-family: $f-Mackinac;
+		left: 15px;
+		padding: 8px 12px;
+		position: absolute;
+		top: 15px;
+		z-index: 33;
+
+		@include fontSet(1.4rem, $fw-SemiBold, 1.6rem);
+
+		&--in {
+			background: $c-tertiary;
+			color: $c-primary;
+		}
+
+		&--out {
+			background-color: #d95959;
+		}
+
+		.product-card.is-flipped & {
+			display: none;
+		}
+	}
+
+	&__thumb {
+		margin-bottom: 12px;
+
+		img {
+			border-radius: 8px;
+			display: block;
+			height: 150px;
+			margin: 0 auto;
+			max-width: 275px;
+			object-fit: contain;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		color: $c-primary;
+		font-family: $f-Mackinac;
+		margin-top: 24px;
+		min-height: 56px;
+
+		@include fontSet(2.2rem, $fw-Bold, 2.8rem);
+
+		.product-card.is-flipped & {
+			margin-top: 0;
+		}
+	}
+
+	&__desc {
+		color: $c-primary;
+		font-family: $f-Mackinac;
+
+		@include lineClamp(9);
+		@include fontSet(1.5rem, $fw-Regular, 2.2rem);
+	}
+
+	&__cta {
+		margin-top: 15px;
+
+		@include fontSet(1.4rem, $fw-SemiBold, 1.6rem);
+
+		a {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}

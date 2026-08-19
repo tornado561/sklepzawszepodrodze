@@ -1,0 +1,20 @@
+@use '../settings' as *;
+
+@mixin preventPointerEvents() {
+	pointer-events: none;
+}
+
+/*
+
+  Example:
+
+    &__linkBtn {
+      @include preventPointerEvents();
+    }
+
+  Result:
+
+    This mixin is adding code that prevent text selecting.
+
+
+*/

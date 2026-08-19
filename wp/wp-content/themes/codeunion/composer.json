@@ -1,0 +1,19 @@
+{
+	"name": "codeunion-starter-theme",
+	"description": "WordPress Starter Theme",
+	"authors": [
+		{
+			"name": "CodeUnion Team",
+			"email": "webadmin@codeunion.dev",
+			"homepage": "https://codeunion.dev/",
+			"role": "Web Developer"
+		}
+	],
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"WPAdvanced\\": "functions/WPAdvanced",
+			"SiteManagement\\": "functions/SiteManagement"
+		}
+	}
+}

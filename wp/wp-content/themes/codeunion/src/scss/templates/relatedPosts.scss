@@ -1,0 +1,50 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.relatedPosts {
+	border-top: 1px solid $c-light;
+	padding-bottom: 60px;
+	padding-top: 24px;
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		margin-bottom: 24px;
+	}
+
+	&__headingItem {
+		@include headingSubSections();
+	}
+
+	&__tiles {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+
+	&__tile {
+		@include tilesWidth(30px, 3);
+
+		@include rwd('tablet-xm') {
+			@include tilesWidth(30px, 2);
+		}
+
+		@include rwd('phone-xxxl') {
+			width: 100%;
+		}
+
+		&:last-child {
+			@include rwd('tablet-xm') {
+				display: none;
+			}
+
+			@include rwd('phone-xxxl') {
+				display: block;
+			}
+		}
+	}
+}

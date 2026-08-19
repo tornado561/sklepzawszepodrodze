@@ -1,0 +1,26 @@
+@use '../settings' as *;
+
+@mixin transform($transformation) {
+	//-webkit-transform: $transformation;
+	transform: $transformation;
+}
+
+/*
+
+  Example:
+
+    h1 {
+      @include transform(rotate(180deg));
+    }
+
+  Result:
+
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+
+  Defaults:
+
+    There is no defaults!
+
+*/

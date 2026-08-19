@@ -1,0 +1,123 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	text-align: left;
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		width: 100%;
+	}
+
+	&__captcha {
+		width: 100%;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		width: 100%;
+
+		&--50 {
+			@include tilesWidth(20px, 2);
+
+			@include rwd('tablet-xl') {
+				width: 100%;
+			}
+		}
+
+		& label {
+			@include fontSet(1.4rem, $fw-SemiBold, 2.4rem);
+
+			color: $c-white;
+		}
+
+		& input:not([type='submit']),
+		& select,
+		& textarea {
+			background: $c-light;
+			border-radius: 8px;
+			padding: 13px;
+			width: 100%;
+
+			@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+		}
+
+		& textarea {
+			border-radius: 8px;
+			overflow: auto;
+			resize: vertical;
+		}
+
+		&--acceptance {
+			& input[type='checkbox'] {
+				@include checkbox2(20px, $c-white, $c-black, $c-white, $c-secondary, $c-secondary);
+
+				background: unset;
+			}
+
+			& label {
+				align-items: center;
+				display: flex;
+				gap: 10px;
+				width: 100%;
+
+				& a {
+					font-weight: $fw-SemiBold;
+					text-decoration: underline;
+					transition: $tr-hover;
+
+					&:hover {
+						color: $c-primary;
+						text-decoration: underline;
+					}
+				}
+			}
+
+			& .wpcf7-list-item {
+				margin-left: 0 !important;
+			}
+		}
+
+		& .wpcf7-not-valid-tip {
+			color: $c-red-02;
+			font-size: 1.4rem;
+			padding-left: 5px;
+			padding-top: 5px;
+		}
+
+		&--submit {
+			position: relative;
+
+			& input[type='submit'] {
+				@include fontSet(1.4rem, $fw-Bold, 2rem);
+
+				position: relative;
+				z-index: 20;
+			}
+
+			& .wpcf7-spinner {
+				margin: 0;
+				position: absolute;
+				right: 16px;
+				top: 50%;
+				width: 24px;
+				z-index: 30;
+
+				@include transform(translateY(-50%));
+			}
+		}
+	}
+}
+
+.wpcf7 form .wpcf7-response-output {
+	margin: 20px 0 !important;
+	padding: 10px !important;
+	width: 100%;
+}

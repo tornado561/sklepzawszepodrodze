@@ -1,0 +1,111 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.iconGrid {
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		color: $c-white;
+		font-family: $f-Mackinac;
+		text-align: center;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__tile {
+		display: flex;
+		gap: 16px;
+	}
+
+	&__tiles {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+		margin-top: 60px;
+
+		&--2 {
+			& .iconGrid__tile {
+				@include tilesWidth(40px, 2);
+
+				@include rwd('tablet-xs') {
+					width: 100%;
+				}
+			}
+		}
+
+		&--3 {
+			& .iconGrid__tile {
+				@include tilesWidth(40px, 3);
+
+				@include rwd('tablet-xl') {
+					@include tilesWidth(40px, 2);
+				}
+
+				@include rwd('tablet-xs') {
+					width: 100%;
+				}
+			}
+		}
+
+		&--4 {
+			& .iconGrid__tile {
+				@include tilesWidth(40px, 4);
+
+				@include rwd('tablet-xl') {
+					@include tilesWidth(40px, 2);
+				}
+
+				@include rwd('tablet-xs') {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&__tileIcon {
+		width: 32px;
+	}
+
+	&__tileIconImage {
+		width: 100%;
+	}
+
+	&__tileContent {
+		width: calc(100% - 32px - 16px);
+	}
+
+	&__tileTitle {
+		@include tileTitle();
+
+		color: $c-white;
+	}
+
+	&__tileText {
+		@include textContent();
+		@include wysiwygContent();
+
+		color: $c-sec-text;
+		margin-top: 5px;
+	}
+
+	&--default {
+		& .iconGrid__tileText {
+			color: $c-pri-text;
+		}
+
+		& .iconGrid__heading,
+		& .iconGrid__tileTitle {
+			color: $c-black;
+		}
+	}
+
+	&--light {
+		background: $c-light;
+	}
+}

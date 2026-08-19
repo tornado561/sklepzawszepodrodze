@@ -1,0 +1,24 @@
+# WordPress core + runtime files (bind mount for Docker) — except our theme
+wp/*
+!wp/wp-content/
+wp/wp-content/*
+!wp/wp-content/themes/
+wp/wp-content/themes/*
+!wp/wp-content/themes/codeunion/
+
+# Theme build artifacts
+wp/wp-content/themes/codeunion/node_modules/
+wp/wp-content/themes/codeunion/dist/
+
+# Env & secrets
+.env
+.env.*
+
+# Local data / dumps
+.local-data/
+.local-data.credentials
+*.sql
+*.sql.gz
+
+# OS / editor
+.DS_Store

@@ -1,0 +1,160 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.contact {
+	&__wrapper {
+	}
+
+	&__helper {
+		align-items: stretch;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 25px;
+
+		&--normal {
+		}
+
+		&--reverse {
+			flex-direction: row-reverse;
+		}
+
+		@include rwd('tablet') {
+			gap: 50px;
+		}
+	}
+
+	&__content {
+		background-color: $c-white;
+		border-radius: 8px;
+		padding: 37px 20px;
+
+		@include tilesWidthCustom(12.5px, 2, 35);
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__heading {
+		color: $c-white;
+		font-family: $f-Mackinac;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__innerHeading {
+		font-family: $f-Mackinac;
+
+		@include fontSet(2.2rem, $fw-Bold, 2.8rem);
+	}
+
+	&__text {
+		@include textContent();
+		@include wysiwygContent();
+
+		color: $c-sec-text;
+		margin-top: 12px;
+		max-width: 400px;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		margin-top: 24px;
+	}
+
+	&__infoItem {
+		align-items: center;
+		background-color: rgba(244, 215, 111, 0.28);
+		border-radius: 8px;
+		display: flex;
+		gap: 12px;
+		padding: 12px;
+	}
+
+	&__infoTextTitle {
+		font-family: $f-Mackinac;
+		margin-bottom: 5px;
+
+		@include fontSet(2.2rem, $fw-Bold, 2.8rem);
+	}
+
+	&__infoIcon {
+		width: 60px;
+	}
+
+	&__infoIconImage {
+		width: 60px;
+
+		& path {
+			fill: $c-white;
+		}
+	}
+
+	&__infoLink {
+		max-width: calc(100% - 23px - 12px);
+
+		@include linkUnderline($c-white, $c-primary-hov);
+		@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+	}
+
+	&__infoText {
+		@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+
+		color: $c-white;
+		width: calc(100% - 23px - 12px);
+	}
+
+	&__button {
+		font-size: 1.8rem;
+		font-weight: $fw-Bold;
+		margin-top: 30px;
+		width: 100%;
+	}
+
+	&__map {
+		border: 7px solid $c-white;
+		border-radius: 8px;
+
+		@include tilesWidthCustom(12.5px, 2, 63);
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+
+		& iframe {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&--default {
+		& .contact__text {
+			color: $c-pri-text;
+		}
+
+		& .contact__heading,
+		& .contact__infoText {
+			color: $c-primary;
+		}
+
+		& .contact__infoLink {
+			@include linkUnderline($c-primary, $c-primary-hov);
+		}
+
+		& .contact__infoIconImage {
+			& path {
+				fill: $c-primary;
+			}
+		}
+	}
+
+	&--light {
+		background: $c-light;
+	}
+}

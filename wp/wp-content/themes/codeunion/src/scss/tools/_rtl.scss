@@ -1,0 +1,31 @@
+@use '../settings' as *;
+
+@mixin rtl() {
+	html[dir='rtl'] & {
+		@content;
+	}
+}
+
+/*
+
+  Example:
+
+    div {
+      float: left;
+
+      @include rtl() {
+        float: right;
+      }
+    }
+
+  Result:
+
+    div {
+      float: left;
+    }
+
+    html[dir=rtl] div {
+      float: right;
+    }
+
+*/

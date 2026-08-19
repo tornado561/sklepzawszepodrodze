@@ -1,0 +1,126 @@
+@use '../settings/index' as *;
+@use '../tools/index' as *;
+
+.categoryPicker {
+	width: 100%;
+
+	@include rwd('tablet') {
+		max-width: calc(100% - 200px);
+	}
+
+	@include rwd('phone-xxl') {
+		max-width: unset;
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		margin-bottom: 20px;
+	}
+
+	&__headingItem {
+		@include fontSet(2.6rem, $fw-Bold, 2.6rem);
+	}
+
+	&__items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		@include rwd('tablet') {
+			display: none;
+		}
+	}
+
+	&__item {
+	}
+
+	&__itemButton {
+		align-items: center;
+		background: $c-light;
+		border: 1px solid $c-transparent;
+		border-radius: 8px;
+		display: inline-flex;
+		justify-content: center;
+		padding: 10px 30px;
+		text-align: center;
+		transition: $tr-hover;
+
+		&:hover {
+			background: $c-primary-hov;
+			color: $c-white;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		&[data-selected='true'] {
+			background: $c-primary;
+			color: $c-white;
+			font-weight: $fw-Bold;
+		}
+
+		@include fontSet(1.6rem, $fw-Regular, 1.8rem);
+	}
+
+	&__mobile {
+		background: $c-primary;
+		border-radius: 8px;
+		display: none;
+		position: relative;
+		width: fit-content;
+
+		@include rwd('tablet') {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__select {
+		@include fontSet(1.6rem, $fw-Bold, 1.8rem);
+
+		align-items: center;
+		border: 1px solid $c-transparent;
+		color: $c-white;
+		display: flex;
+		height: 40px;
+		padding: 4px 40px 4px 20px;
+		position: relative;
+		z-index: 20;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		& option {
+			background: $c-black;
+			color: $c-white;
+		}
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		z-index: 10;
+
+		@include transform(translateY(-42%));
+
+		& svg {
+			width: 13px;
+
+			& path {
+				fill: $c-white;
+			}
+		}
+	}
+}

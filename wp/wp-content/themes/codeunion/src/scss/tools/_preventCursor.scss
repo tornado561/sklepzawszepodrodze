@@ -1,0 +1,20 @@
+@use '../settings' as *;
+
+@mixin preventCursor() {
+	user-select: none;
+}
+
+/*
+
+  Example:
+
+    &__linkBtn {
+      @include preventCursor();
+    }
+
+  Result:
+
+    This mixin is adding code that prevent text selecting.
+
+
+*/

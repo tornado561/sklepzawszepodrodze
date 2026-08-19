@@ -1,0 +1,21 @@
+@use '../settings' as *;
+
+@mixin link($color: #fff, $hoverColor: #0000ff) {
+	color: $color;
+	transition: $tr-hover;
+
+	&:hover {
+		color: $hoverColor;
+	}
+}
+
+@mixin linkUnderline($color: #fff, $hoverColor: #0000ff) {
+	color: $color;
+	text-decoration: underline;
+	transition: $tr-hover;
+
+	&:hover {
+		color: $hoverColor;
+		text-decoration: underline;
+	}
+}

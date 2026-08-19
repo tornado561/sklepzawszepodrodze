@@ -1,0 +1,166 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.testimonials {
+	background: $c-white;
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		font-family: $f-Mackinac;
+		text-align: center;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__sliderHelper {
+		margin-top: 60px;
+	}
+
+	&__sliderBox {
+	}
+
+	&__slider {
+		&[data-active='false'] {
+			display: flex;
+			gap: 30px;
+		}
+
+		&--2 {
+			&[data-active='false'] {
+				& .imageSlider__item {
+					@include tilesWidth(30px, 2);
+
+					@include rwd('tablet-xl') {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&--3 {
+			&[data-active='false'] {
+				& .imageSlider__item {
+					@include tilesWidth(30px, 3);
+
+					@include rwd('tablet-xl') {
+						@include tilesWidth(30px, 2);
+					}
+
+					@include rwd('tablet-s') {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	&__item {
+		background: $c-light;
+		border-radius: 12px;
+		padding: 20px 20px 100px;
+		position: relative;
+	}
+
+	&__itemRating {
+		align-items: center;
+		display: flex;
+		gap: 5px;
+		margin-bottom: 30px;
+	}
+
+	&__itemAuthor {
+		@include tileTitle();
+	}
+
+	&__itemText {
+		margin-top: 10px;
+
+		@include textContent();
+		@include wysiwygContent();
+	}
+
+	&__itemInfo {
+		align-items: center;
+		border-top: 2px solid $c-white;
+		bottom: 20px;
+		display: flex;
+		justify-content: space-between;
+		left: 20px;
+		padding-top: 10px;
+		position: absolute;
+		width: calc(100% - 40px);
+	}
+
+	&__itemDate {
+	}
+
+	&__itemGoogle {
+	}
+
+	&__itemGoogleIcon {
+		width: 32px;
+	}
+
+	&__itemAuthorInfo {
+		margin-top: 5px;
+
+		@include fontSet(1.3rem, $fw-Regular, 1.5rem);
+	}
+
+	&__nav {
+		align-items: center;
+		display: flex;
+		gap: 12px;
+		justify-content: center;
+		margin-top: 24px;
+
+		&[data-active='false'] {
+			display: none;
+		}
+	}
+
+	&__navBtn {
+		align-items: center;
+		aspect-ratio: 1 / 1;
+		background: $c-secondary;
+		border: 1px solid $c-transparent;
+		border-radius: 8px;
+		color: $c-white;
+		cursor: pointer;
+		display: inline-flex;
+		justify-content: center;
+		text-align: center;
+		transition: $tr-hover;
+		width: 50px;
+
+		&:hover {
+			background: $c-secondary-hov;
+		}
+
+		& svg {
+			width: 23px;
+		}
+	}
+
+	&--default {
+	}
+
+	&--light {
+		background: $c-light;
+
+		& .testimonials__item {
+			background: $c-white;
+		}
+
+		& .testimonials__itemInfo {
+			border-color: $c-light;
+		}
+	}
+}

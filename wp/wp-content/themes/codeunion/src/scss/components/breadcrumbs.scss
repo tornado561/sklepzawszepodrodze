@@ -1,0 +1,38 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.breadcrumbs {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	&__item {
+		align-items: center;
+		display: flex;
+		gap: 8px;
+	}
+
+	&__link {
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+
+		border: 1px solid $c-transparent;
+		transition: $tr-hover;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__arrow {
+		width: 8px;
+	}
+
+	&__text {
+		@include fontSet(1.4rem, $fw-Bold, 1.6rem);
+	}
+}

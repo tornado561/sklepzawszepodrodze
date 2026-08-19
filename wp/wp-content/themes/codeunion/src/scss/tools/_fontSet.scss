@@ -1,0 +1,29 @@
+@use '../settings' as *;
+
+@mixin fontSet($size: 1.6rem, $weight: normal, $lineHeight: normal) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $lineHeight;
+}
+
+/*
+
+  Example:
+
+    h1 {
+      @include fontSet(20px, bold, 30px);
+    }
+
+  Result:
+
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+
+  Defaults:
+
+    font-size: 16px;
+    font-weight: normal;
+    line-height: normal;
+
+*/

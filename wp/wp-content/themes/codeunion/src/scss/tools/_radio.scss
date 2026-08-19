@@ -1,0 +1,66 @@
+@use '../settings' as *;
+
+@mixin radio(
+	$normalBackgroundColor: $c-white,
+	$borderNormalColor: $c-black,
+	$checkedBackgroundColor: $c-white,
+	$checkedBorderColor: $c-black,
+	$checkedDotColor: $c-black,
+	$focusShadow: $c-black-15
+) {
+	& label {
+		cursor: pointer;
+		width: calc(100% - 20px - 8px);
+
+		@include preventCursor();
+	}
+
+	& .radioInput {
+		align-items: center;
+		display: flex;
+		gap: 8px;
+		margin-bottom: 20px;
+
+		& input:checked + label {
+			font-weight: $fw-Bold;
+		}
+	}
+
+	& input[type='radio'] {
+		align-items: center;
+		appearance: none;
+		background-color: $normalBackgroundColor;
+		border: 2px solid $borderNormalColor;
+		border-radius: 50%;
+		color: blue;
+		cursor: pointer;
+		display: flex;
+		height: 20px;
+		justify-content: center;
+		margin: 0;
+		width: 20px;
+
+		&:before {
+			border-radius: 50%;
+			box-shadow: inset 10px 10px $checkedDotColor;
+			content: '';
+			height: 8px;
+			transform: scale(0);
+			transition: 120ms transform ease-in-out;
+			width: 8px;
+		}
+
+		&:checked {
+			background: $checkedBackgroundColor;
+			border: 2px solid $checkedBorderColor;
+
+			&:before {
+				transform: scale(1);
+			}
+		}
+
+		&:focus {
+			box-shadow: 0 0 8px $focusShadow;
+		}
+	}
+}

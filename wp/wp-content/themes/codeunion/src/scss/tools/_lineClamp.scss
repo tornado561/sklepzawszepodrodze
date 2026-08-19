@@ -1,0 +1,8 @@
+@use '../settings' as *;
+
+@mixin lineClamp($number) {
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: $number;
+	overflow: hidden;
+}

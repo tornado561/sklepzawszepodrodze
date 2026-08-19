@@ -1,0 +1,178 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+$tocSize: 400px;
+$tocSize-tablet: 270px;
+
+.singleContent {
+	margin-bottom: 30px;
+
+	&__heading {
+		margin-bottom: 30px;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 50px;
+
+		@include rwd('tablet') {
+			flex-direction: column;
+		}
+	}
+
+	&__helper {
+		width: calc(100% - $tocSize - 50px);
+
+		@include rwd('tablet-xl') {
+			width: calc(100% - $tocSize-tablet - 50px);
+		}
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__blocks {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	&__nav {
+		display: flex;
+		gap: 20px;
+		margin-top: 60px;
+	}
+
+	&__navCol {
+		@include tilesWidth(20px, 2);
+
+		&--right {
+			text-align: right;
+		}
+	}
+
+	&__navLinkIconItem {
+		width: 12px;
+
+		& path {
+			fill: $c-primary-hov;
+			transition: $tr-hover;
+		}
+	}
+
+	&__navLink {
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: inline-flex;
+		gap: 5px;
+		transition: $tr-hover;
+
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+
+		&:hover {
+			color: $c-tertiary;
+
+			& .singleContent__navLinkIcon {
+				& path {
+					fill: $c-tertiary;
+				}
+			}
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__navLinkIcon {
+	}
+
+	&__sidebar {
+		width: $tocSize;
+
+		@include rwd('tablet-xl') {
+			width: $tocSize-tablet;
+		}
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__toc {
+		background: $c-light;
+		border-radius: 12px;
+		display: none;
+		padding: 30px;
+		position: sticky;
+		top: 120px;
+
+		@include rwd('tablet') {
+			position: relative;
+			top: unset;
+		}
+
+		&[data-active='true'] {
+			display: block;
+		}
+	}
+
+	&__tocTitle {
+		@include fontSet(1.8rem, $fw-Bold, 2.4rem);
+
+		border-bottom: 1.5px solid $c-black-10;
+		margin-bottom: 14px;
+		padding-bottom: 14px;
+	}
+
+	&__tocContent {
+	}
+
+	&__tocList {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	&__tocItem {
+	}
+
+	&__tocLink {
+		border: 1px solid $c-transparent;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		@include link($c-black, $c-primary);
+		@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+	}
+
+	&__tocSubList {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		margin-top: 5px;
+		padding-left: 15px;
+	}
+
+	&__tocSubItem {
+	}
+
+	&__tocSubLink {
+		border: 1px solid $c-transparent;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		@include link($c-black, $c-primary);
+		@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+	}
+}

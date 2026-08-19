@@ -1,0 +1,150 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.navbar {
+	@include rwd('tablet-xl') {
+		display: none;
+	}
+
+	&__wrapper {
+	}
+
+	&__menu {
+	}
+
+	&__menuList {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+		justify-content: center;
+
+		@include rwd('laptop') {
+			gap: 20px;
+		}
+	}
+
+	&__menuListLink {
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+		@include link($c-pri-text, $c-primary);
+
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: inline-flex;
+		gap: 10px;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__menuListText {
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+
+		transition: $tr-hover;
+	}
+
+	&__menuListLinkIcon {
+		& img,
+		& svg {
+			width: 12px;
+
+			@include transition(transform, 0.2s, ease-in-out);
+		}
+
+		& svg {
+			& path {
+				transition: $tr-hover;
+			}
+		}
+	}
+
+	&__menuListLinkBtn {
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: flex;
+		gap: 5px;
+		padding: 10px 0;
+
+		&:hover {
+			& .navbar__menuListText {
+				color: $c-primary;
+			}
+
+			& svg {
+				& path {
+					fill: $c-primary;
+				}
+			}
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__subMenu {
+		background: $c-white;
+		border: 1px solid $c-sec-text;
+		border-radius: 10px;
+		color: $c-pri-text;
+		display: none;
+		left: 50%;
+		padding: 16px;
+		position: absolute;
+		top: 55px;
+		width: 220px;
+
+		@include transform(translateX(-50%));
+		@include transform(translate(-50%, -9999px));
+		@include transition(transform, 0.1s, ease-in-out);
+	}
+
+	&__subMenuLink {
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+		@include link($c-pri-text, $c-primary);
+
+		border: 1px solid $c-transparent;
+		display: block;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__subMenuItem {
+		border-bottom: 1px solid $c-sec-text;
+		padding: 12px 0;
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	&__menuListItem {
+		align-items: center;
+		display: flex;
+		gap: 3px;
+		position: relative;
+
+		&[data-active='true'] {
+			& .navbar__subMenu {
+				display: block;
+
+				@include transform(translate(-50%, 0));
+			}
+
+			& .navbar__menuListLinkIcon {
+				& svg,
+				& img {
+					@include transform(rotate(180deg));
+				}
+			}
+		}
+	}
+}

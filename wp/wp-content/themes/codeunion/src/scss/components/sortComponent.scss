@@ -1,0 +1,63 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.sortComponent {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+
+	@include rwd('phone-xxl') {
+		width: 100%;
+	}
+
+	&__label {
+		@include textContent();
+
+		@include rwd('tablet') {
+			display: none;
+		}
+	}
+
+	&__form {
+		background: $c-light;
+		border-radius: 8px;
+		position: relative;
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__select {
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: flex;
+		height: 40px;
+		padding: 10px 40px 10px 20px;
+		position: relative;
+		z-index: 20;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		@include fontSet(1.6rem, $fw-Bold, 1.8rem);
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		z-index: 10;
+
+		@include transform(translateY(-42%));
+
+		& svg {
+			width: 13px;
+		}
+	}
+}

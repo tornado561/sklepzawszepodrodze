@@ -1,0 +1,87 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.iconTiles {
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		font-family: $f-Mackinac;
+		margin-bottom: 60px;
+		text-align: center;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__tiles {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+	}
+
+	&__tile {
+		@include tilesWidth(40px, 4);
+
+		background: $c-light;
+		border-radius: 8px;
+		padding: 20px;
+		text-align: center;
+
+		@include rwd('tablet') {
+			@include tilesWidth(40px, 2);
+		}
+
+		@include rwd('tablet-s') {
+			width: 100%;
+		}
+	}
+
+	&__tileIcon {
+		align-items: center;
+		aspect-ratio: 1 / 1;
+		background: $c-tertiary;
+		border-radius: 8px;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 8px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 65px;
+	}
+
+	&__tileIconImage {
+		height: 32px;
+		object-fit: contain;
+		width: 32px;
+	}
+
+	&__tileContent {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		min-height: calc(2.4rem * 2);
+		text-align: center;
+	}
+
+	&__tileTitle {
+		@include tileTitle();
+
+		text-align: center;
+	}
+
+	&--default {
+	}
+
+	&--light {
+		background: $c-light;
+
+		& .iconTiles__tile {
+			background: $c-white;
+		}
+	}
+}

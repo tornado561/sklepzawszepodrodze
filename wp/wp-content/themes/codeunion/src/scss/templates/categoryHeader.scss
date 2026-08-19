@@ -1,0 +1,42 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.categoryHeader {
+	background: $c-primary;
+	padding-bottom: 60px;
+	padding-top: 30px;
+
+	&--mainPage {
+		padding-bottom: 10px;
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__breadcrumbs {
+		color: $c-sec-text;
+		margin-bottom: 30px;
+	}
+
+	&__content {
+	}
+
+	&__heading {
+		color: $c-white;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__text {
+		@include textContent();
+
+		color: $c-sec-text;
+		margin-top: 24px;
+		max-width: 500px;
+	}
+}

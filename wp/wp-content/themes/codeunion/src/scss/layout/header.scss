@@ -1,0 +1,105 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.header {
+	background: $c-light;
+	border-bottom: 1px solid $c-light;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 8000;
+
+	&__wrapper {
+	}
+
+	&__helper {
+		align-items: center;
+		display: flex;
+		gap: 20px;
+		height: 80px;
+	}
+
+	&__logo {
+		border: 1px solid $c-transparent;
+		display: block;
+		height: 65px;
+		width: 250px;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__logoItem {
+		height: 100%;
+		object-fit: contain;
+		object-position: left center;
+		width: 100%;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+		width: calc(100% - 250px - 250px - 20px - 20px);
+	}
+
+	&__side {
+		align-items: center;
+		display: flex;
+		gap: 20px;
+		justify-content: flex-end;
+		width: 250px;
+	}
+
+	&__cta {
+		@include rwd('phone-xxxl') {
+			display: none;
+		}
+	}
+
+	&__mobileActions {
+		display: none;
+
+		@include rwd('tablet-xl') {
+			display: block;
+		}
+	}
+
+	&__triggerBtnOpen {
+	}
+
+	&__triggerBtnClose {
+		display: none;
+	}
+
+	&__triggerBtn {
+		@include btnNavTrigger();
+
+		&[data-active='true'] {
+			& .header__triggerBtnOpen {
+				display: none;
+			}
+
+			& .header__triggerBtnClose {
+				display: block;
+			}
+		}
+
+		& svg {
+			width: 23px;
+		}
+	}
+}
+
+.headerSeparate {
+	height: 80px;
+}
+
+body.admin-bar {
+	& .header {
+		top: 32px;
+	}
+}

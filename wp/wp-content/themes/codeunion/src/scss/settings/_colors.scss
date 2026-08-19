@@ -1,0 +1,73 @@
+@use 'sass:color';
+
+$c-black: #000000;
+$c-white: #ffffff;
+
+$c-primary: #204b42;
+$c-primary-hov: color.adjust($c-primary, $lightness: 20%);
+$c-primary-disabled: #2f4841;
+$c-secondary: #f4d76f;
+$c-secondary-hov: color.adjust($c-secondary, $lightness: -20%);
+$c-secondary-disabled: #f1d583;
+$c-tertiary: #d3e26d;
+$c-tertiary-hov: color.adjust($c-tertiary, $lightness: -20%);
+$c-tertiary-disabled: #d2e18a;
+$c-dark: #333333;
+$c-dark-hov: color.adjust($c-dark, $lightness: 20%);
+$c-dark-disabled: #505050;
+
+$c-light: #f4f1ea;
+$c-light-02: #d9d7d2;
+
+$c-pri-text: #204b42;
+$c-sec-text: #dfdfdf;
+$c-placeholder: #9a9a9a;
+
+$c-primary-light: #316056;
+
+$c-gray-01: #585858;
+
+$c-red: red;
+$c-red-02: #f15e5e;
+
+$c-focus: red;
+
+$c-transparent: rgba(0, 0, 0, 0);
+
+$c-white-10: rgba(255, 255, 255, 0.1);
+$c-white-15: rgba(255, 255, 255, 0.15);
+$c-white-20: rgba(255, 255, 255, 0.2);
+$c-white-25: rgba(255, 255, 255, 0.25);
+$c-white-30: rgba(255, 255, 255, 0.3);
+$c-white-35: rgba(255, 255, 255, 0.35);
+$c-white-40: rgba(255, 255, 255, 0.4);
+$c-white-45: rgba(255, 255, 255, 0.45);
+$c-white-50: rgba(255, 255, 255, 0.5);
+$c-white-55: rgba(255, 255, 255, 0.55);
+$c-white-60: rgba(255, 255, 255, 0.6);
+$c-white-65: rgba(255, 255, 255, 0.65);
+$c-white-70: rgba(255, 255, 255, 0.7);
+$c-white-75: rgba(255, 255, 255, 0.75);
+$c-white-80: rgba(255, 255, 255, 0.8);
+$c-white-85: rgba(255, 255, 255, 0.85);
+$c-white-90: rgba(255, 255, 255, 0.9);
+$c-white-95: rgba(255, 255, 255, 0.95);
+
+$c-black-10: rgba(0, 0, 0, 0.1);
+$c-black-15: rgba(0, 0, 0, 0.15);
+$c-black-20: rgba(0, 0, 0, 0.2);
+$c-black-25: rgba(0, 0, 0, 0.25);
+$c-black-30: rgba(0, 0, 0, 0.3);
+$c-black-35: rgba(0, 0, 0, 0.35);
+$c-black-40: rgba(0, 0, 0, 0.4);
+$c-black-45: rgba(0, 0, 0, 0.45);
+$c-black-50: rgba(0, 0, 0, 0.5);
+$c-black-55: rgba(0, 0, 0, 0.55);
+$c-black-60: rgba(0, 0, 0, 0.6);
+$c-black-65: rgba(0, 0, 0, 0.65);
+$c-black-70: rgba(0, 0, 0, 0.7);
+$c-black-75: rgba(0, 0, 0, 0.75);
+$c-black-80: rgba(0, 0, 0, 0.8);
+$c-black-85: rgba(0, 0, 0, 0.85);
+$c-black-90: rgba(0, 0, 0, 0.9);
+$c-black-95: rgba(0, 0, 0, 0.95);

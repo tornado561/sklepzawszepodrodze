@@ -1,0 +1,73 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+
+	&--page {
+		gap: 10px;
+	}
+
+	& .nav-links {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	& .page-numbers {
+		align-items: center;
+		background: $c-light;
+		border: 1px solid $c-transparent;
+		border-radius: 3px;
+		display: flex;
+		height: 50px;
+		justify-content: center;
+		text-align: center;
+		transition: $tr-hover;
+		width: 40px;
+
+		@include fontSet(1.6rem, $fw-Regular, 1.6rem);
+
+		& svg,
+		& img {
+			width: 21px;
+
+			& path {
+				fill: $c-pri-text;
+				transition: $tr-hover;
+			}
+		}
+
+		&:hover {
+			background: $c-primary-hov;
+			color: $c-white;
+
+			& svg {
+				& path {
+					fill: $c-white;
+				}
+			}
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	& .current {
+		font-weight: $fw-Bold;
+
+		&:hover {
+			background: $c-light;
+			color: $c-pri-text;
+		}
+	}
+
+	& .next,
+	& .prev {
+		width: 50px;
+	}
+}

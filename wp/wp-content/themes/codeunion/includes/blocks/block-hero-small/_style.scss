@@ -1,0 +1,74 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.heroSmall {
+	position: relative;
+
+	&__backgroundImage {
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		opacity: 0.35;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 20;
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+		position: relative;
+		z-index: 50;
+	}
+
+	&__breadcrumbs {
+		color: $c-white;
+		margin-bottom: 30px;
+	}
+
+	&__heading {
+		color: $c-white;
+		font-family: $f-Mackinac;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__text {
+		color: $c-sec-text;
+		margin-top: 12px;
+
+		@include wysiwygContent();
+		@include textContent();
+	}
+
+	&--default {
+		background: $c-white;
+
+		& .heroSmall__heading,
+		& .heroSmall__breadcrumbs {
+			color: $c-black;
+		}
+
+		& .heroSmall__text {
+			color: $c-pri-text;
+		}
+
+		& .breadcrumbs__arrow {
+			& path {
+				fill: $c-black;
+			}
+		}
+	}
+
+	&--img {
+		background: $c-black;
+	}
+
+	&--light {
+		background: $c-light;
+	}
+}

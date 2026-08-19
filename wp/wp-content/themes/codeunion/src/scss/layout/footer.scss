@@ -1,0 +1,201 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.footer {
+	background: $c-primary;
+	color: $c-white;
+	margin-top: 200px;
+
+	@include rwd('tablet-xl') {
+		margin-top: 100px;
+	}
+
+	&__top {
+		position: relative;
+	}
+
+	&__topImage {
+		position: absolute;
+
+		img {
+			max-width: 100%;
+		}
+
+		&--left {
+			left: 80px;
+			max-width: 400px;
+			top: -200px;
+
+			@include rwd('tablet-xl') {
+				left: 40px;
+				max-width: 250px;
+				top: -120px;
+			}
+
+			@include rwd('tablet-xs') {
+				left: 0;
+				max-width: 200px;
+				top: -100px;
+			}
+
+			@include rwd('phone-l') {
+				max-width: 150px;
+				top: -70px;
+			}
+		}
+
+		&--right {
+			max-width: 375px;
+			right: 0;
+			top: -120px;
+
+			@include rwd('tablet-xl') {
+				max-width: 200px;
+				top: -60px;
+			}
+
+			@include rwd('tablet-xs') {
+				max-width: 150px;
+				top: -50px;
+			}
+		}
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__content {
+		align-items: flex-start;
+		border-bottom: 1px solid $c-gray-01;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+		padding: 70px 0;
+	}
+
+	&__contentBox {
+		@include tilesWidth(40px, 2);
+
+		@include rwd('phone-xxxl') {
+			width: 100%;
+		}
+	}
+
+	&__logo {
+		max-width: 147px;
+		width: 90%;
+
+		@include rwd('phone-xxxl') {
+			margin: 0 auto;
+		}
+	}
+
+	&__text {
+		margin-top: 25px;
+		max-width: 390px;
+
+		@include textContent();
+
+		@include rwd('phone-xxxl') {
+			max-width: 100%;
+			text-align: center;
+		}
+	}
+
+	&__socials {
+		align-items: center;
+		display: flex;
+		gap: 20px;
+		justify-content: flex-end;
+
+		@include tilesWidth(40px, 2);
+
+		@include rwd('phone-xxxl') {
+			justify-content: center;
+			width: 100%;
+		}
+	}
+
+	&__socialsItem {
+	}
+
+	&__socialsLink {
+		align-items: center;
+		aspect-ratio: 1 / 1;
+		background: $c-primary;
+		border: 1px solid $c-transparent;
+		border-radius: 8px;
+		display: flex;
+		justify-content: center;
+		transition: $tr-hover;
+		width: 50px;
+
+		& img,
+		& svg {
+			height: 32px;
+			width: 32px;
+		}
+
+		&:hover {
+			background: $c-primary-hov;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__sub {
+		align-items: center;
+		color: $c-sec-text;
+		display: flex;
+		gap: 40px;
+		justify-content: space-between;
+		padding: 20px 0;
+
+		@include rwd('phone-xxxl') {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__links {
+		@include textContent();
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: flex-start;
+
+		@include rwd('phone-xxxl') {
+			justify-content: center;
+			width: 100%;
+		}
+	}
+
+	&__link {
+		@include link($c-sec-text, $c-white);
+	}
+
+	&__copyright {
+		@include fontSet(1.4rem, $fw-Regular, 1.8rem);
+	}
+
+	&__menu {
+		@include textContent();
+
+		align-items: flex-start;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	&__menuItem {
+	}
+
+	&__menuLink {
+		@include link($c-sec-text, $c-white);
+	}
+}

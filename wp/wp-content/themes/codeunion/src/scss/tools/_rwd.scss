@@ -1,0 +1,136 @@
+@use 'sass:map';
+@use '../settings' as *;
+
+$breakpointsDown: (
+	'phone': '(max-width:  360px)',
+	'phone-m': '(max-width:  410px)',
+	'phone-l': '(max-width:  480px)',
+	'phone-xxl': '(max-width:  530px)',
+	'phone-xxxl': '(max-width:  560px)',
+	'tablet-xs': '(max-width:  600px)',
+	'tablet-s': '(max-width:  680px)',
+	'tablet': '(max-width:  768px)',
+	'tablet-m': '(max-width:  800px)',
+	'tablet-xm': '(max-width:  880px)',
+	'tablet-l': '(max-width:  950px)',
+	'tablet-xl': '(max-width: 1024px)',
+	'laptop-s': '(max-width: 1150px)',
+	'laptop': '(max-width: 1280px)',
+	'laptop-m': '(max-width: 1366px)',
+	'laptop-l': '(max-width: 1500px)',
+	'laptop-xl': '(max-width: 1560px)',
+	'ultra': '(max-width: 1600px)',
+);
+
+$breakpointsUp: (
+	'phone': '(min-width:  361px)',
+	'phone-m': '(min-width:  411px)',
+	'phone-l': '(min-width:  481px)',
+	'phone-xxl': '(min-width:  531px)',
+	'phone-xxxl': '(min-width:  561px)',
+	'tablet-xs': '(min-width:  601px)',
+	'tablet-s': '(min-width:  681px)',
+	'tablet': '(min-width:  769px)',
+	'tablet-m': '(min-width:  801px)',
+	'tablet-xm': '(min-width:  881px)',
+	'tablet-l': '(min-width:  951px)',
+	'tablet-xl': '(min-width: 1025px)',
+	'laptop-s': '(min-width: 1151px)',
+	'laptop': '(min-width: 1281px)',
+	'laptop-m': '(min-width: 1367px)',
+	'laptop-l': '(min-width: 1501px)',
+	'laptop-xl': '(min-width: 1561px)',
+	'ultra': '(min-width: 1601px)',
+);
+
+$mobileFirst: false !default;
+
+@mixin rwd($breakpoint, $breakpointUp: $mobileFirst) {
+	@if ($breakpointUp != false) {
+		$media-query: map.get($breakpointsUp, $breakpoint);
+
+		@if $media-query {
+			@media #{$media-query} {
+				@content;
+			}
+		}
+
+ @else {
+			@warn 'Unfortunately, not found breakpoint called `#{$breakpoint}`!';
+		}
+	}
+
+ @else {
+		$media-query: map.get($breakpointsDown, $breakpoint);
+
+		@if $media-query {
+			@media #{$media-query} {
+				@content;
+			}
+		}
+
+ @else {
+			@warn 'Unfortunately, not found breakpoint called `#{$breakpoint}`!';
+		}
+	}
+}
+
+@mixin rwdOrientation($type) {
+	@if ($type == 'portrait') {
+		@media only screen and (max-aspect-ratio: 1 / 1) {
+			//portrait
+			@content;
+		}
+	}
+
+ @else {
+		@media only screen and (min-aspect-ratio: 1 / 1) {
+			//horizontal
+			@content;
+		}
+	}
+}
+
+/*
+
+  Example:
+
+    ul {
+      margin-bottom: 15px;
+
+      @include rwd(tablet, true) {
+        margin-bottom: 30px;
+      }
+
+      li {
+        margin-bottom: 20px;
+
+        @include rwd(tablet) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+  Result:
+
+    ul {
+      margin-bottom: 15px;
+    }
+
+    ul li {
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 769px) {
+      ul {
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      ul li {
+        margin-bottom: 10px;
+      }
+    }
+
+*/

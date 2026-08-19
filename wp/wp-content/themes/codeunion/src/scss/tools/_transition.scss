@@ -1,0 +1,9 @@
+@use '../settings' as *;
+
+@mixin transition($attr: max-height, $duration: 0.5s, $type: ease-in, $delay: 0s) {
+	//-webkit-transition: $attr $duration $type $delay;
+	//-moz-transition: $attr $duration $type $delay;
+	//-ms-transition: $attr $duration $type $delay;
+	//-o-transition: $attr $duration $type $delay;
+	transition: $attr $duration $type $delay;
+}

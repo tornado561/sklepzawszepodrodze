@@ -1,0 +1,160 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.mobileNav {
+	background: $c-white;
+	border-left: 1px solid $c-sec-text;
+	color: $c-pri-text;
+	display: none;
+	flex-direction: column;
+	gap: 20px;
+	height: calc(100vh - 81px);
+	max-width: 400px;
+	overflow-y: auto;
+	padding: 24px;
+	position: fixed;
+	right: 0;
+	top: 81px;
+	width: 100%;
+
+	&[data-active='true'] {
+		@include transform(translateX(0));
+	}
+
+	@include transform(translateX(10000px));
+
+	@include rwd('tablet-xl') {
+		&[data-active='true'] {
+			display: flex;
+		}
+	}
+
+	@include rwd('tablet-xs') {
+		max-width: unset;
+	}
+
+	&__menu {
+	}
+
+	&__menuList {
+	}
+
+	&__menuListLink {
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: flex;
+		gap: 10px;
+		justify-content: space-between;
+		padding: 10px 20px 10px 0;
+		transition: $tr-hover;
+
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+
+		&:hover {
+			color: $c-primary;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__menuListLinkIcon {
+		& svg {
+			width: 18px;
+
+			& path {
+				fill: $c-pri-text;
+				transition: $tr-hover;
+			}
+		}
+	}
+
+	&__menuListLinkBtn {
+		align-items: center;
+		border: 1px solid $c-transparent;
+		display: flex;
+		justify-content: flex-end;
+		padding: 10px 0 10px 10px;
+		width: 30px;
+
+		&:hover {
+			color: $c-primary;
+
+			& svg {
+				& path {
+					fill: $c-primary;
+				}
+			}
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		&--full {
+			justify-content: space-between;
+			padding: 10px 0;
+			width: 100%;
+		}
+	}
+
+	&__subMenu {
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	&__menuListItem {
+		align-items: center;
+		border-bottom: 1.5px solid $c-sec-text;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 10px 0;
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&[aria-expanded='true'] {
+			& .mobileNav__menuListLinkIcon {
+				@include transform(rotate(180deg));
+			}
+
+			& .mobileNav__subMenu {
+				display: block;
+				max-height: 999px;
+			}
+		}
+	}
+
+	&__subMenuItem {
+		padding-left: 20px;
+	}
+
+	&__subMenuLink {
+		@include fontSet(1.4rem, $fw-Regular, 1.6rem);
+
+		border: 1px solid $c-transparent;
+		display: block;
+		padding: 10px 0;
+		transition: $tr-hover;
+
+		&:hover {
+			color: $c-primary;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+}
+
+body.admin-bar {
+	& .mobileNav {
+		height: calc(100vh - 81px - 32px);
+		top: calc(32px + 81px);
+	}
+}

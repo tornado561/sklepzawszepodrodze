@@ -1,0 +1,67 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: sklepzpd_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: sklepzpd
+      MYSQL_USER: sklepzpd
+      MYSQL_PASSWORD: sklepzpd
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3319:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  wordpress:
+    image: wordpress:latest
+    container_name: sklepzpd_wp
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8094:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: sklepzpd
+      WORDPRESS_DB_USER: sklepzpd
+      WORDPRESS_DB_PASSWORD: sklepzpd
+    volumes:
+      - ./wp:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: sklepzpd_pma
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8194:80"
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 512M
+
+  wpcli:
+    image: wordpress:cli
+    depends_on:
+      db:
+        condition: service_healthy
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: sklepzpd
+      WORDPRESS_DB_USER: sklepzpd
+      WORDPRESS_DB_PASSWORD: sklepzpd
+    volumes:
+      - ./wp:/var/www/html
+    profiles: ["cli"]
+
+volumes:
+  db_data:

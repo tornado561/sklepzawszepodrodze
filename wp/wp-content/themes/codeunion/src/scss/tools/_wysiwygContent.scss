@@ -1,0 +1,146 @@
+@use '../settings' as *;
+@use 'fontSizes' as *;
+
+@mixin wysiwygContent() {
+	& p {
+		padding-bottom: 20px;
+
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
+	/* stylelint-disable no-descending-specificity */
+	& li p {
+		padding-bottom: 1px;
+	}
+	/* stylelint-enable no-descending-specificity */
+	& a {
+		//color: $c-primary;
+		font-weight: $fw-Bold;
+		text-decoration: underline;
+		transition: $tr-hover;
+
+		&:hover {
+			color: $c-primary;
+		}
+
+		&:focus-visible {
+			outline: 1px solid $c-focus;
+		}
+	}
+
+	& ul,
+	& ol {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+
+		& ul,
+		& ol {
+			gap: 2px;
+			padding-bottom: 0;
+		}
+	}
+
+	& ul {
+		& li {
+			list-style-type: disc;
+			padding-bottom: 1px;
+		}
+
+		& ol {
+			& li {
+				list-style-type: decimal;
+			}
+		}
+	}
+
+	& ol {
+		/* stylelint-disable no-descending-specificity */
+		& li {
+			list-style-type: decimal;
+			padding-bottom: 1px;
+		}
+
+		/* stylelint-enable no-descending-specificity */
+
+		& ul {
+			& li {
+				list-style-type: disc;
+			}
+		}
+	}
+
+	& h1,
+	& h2 {
+		@include headingSmall();
+	}
+
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
+		@include headingExtraSmall();
+	}
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
+		margin-bottom: 20px;
+	}
+
+	& table {
+		width: 100%;
+	}
+
+	& tr {
+	}
+
+	& td {
+	}
+
+	& blockquote {
+		background: $c-primary-hov;
+		border-left: 3px solid $c-primary;
+		border-radius: 12px;
+		color: $c-white;
+		margin-bottom: 12px;
+		padding: 20px;
+	}
+
+	& em {
+		font-style: italic;
+	}
+
+	& b {
+		font-weight: $fw-Bold;
+	}
+
+	& strong {
+		font-weight: $fw-Bold;
+	}
+
+	& img {
+		max-width: 100%;
+	}
+}
+
+/*
+
+  Example:
+
+    &__content {
+      @include wysiwygContent();
+    }
+
+  Result:
+
+    This mixin is adding DRY code for post wysywig content.
+
+
+*/

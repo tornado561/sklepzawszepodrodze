@@ -1,0 +1,96 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.offer {
+	padding-bottom: 150px;
+
+	&__wrapper {
+		position: relative;
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		font-family: $f-Mackinac;
+		margin-bottom: 15px;
+		text-align: center;
+
+		@include heroHeading();
+	}
+
+	&__headingItem {
+	}
+
+	&__text {
+		text-align: center;
+
+		@include textContent();
+	}
+
+	&__actions {
+		margin-top: 30px;
+		text-align: center;
+	}
+
+	&__products {
+		margin-top: 40px;
+	}
+
+	&__grid {
+	}
+
+	&--default {
+		background-color: $c-white;
+	}
+
+	&__prev {
+		align-items: center;
+		background-color: $c-secondary;
+		border-radius: 5px;
+		bottom: -120px;
+		display: flex;
+		height: 65px;
+		justify-content: center;
+		left: calc(50% - 75px);
+		position: absolute;
+		transform: translateY(-50%);
+		width: 65px;
+		z-index: 10;
+
+		@include rwd('laptop-s') {
+			height: 50px;
+			right: calc(50% - 55px);
+			width: 50px;
+
+			svg {
+				max-width: 20px;
+			}
+		}
+	}
+
+	&__next {
+		align-items: center;
+		background-color: $c-secondary;
+		border-radius: 5px;
+		bottom: -120px;
+		display: flex;
+		height: 65px;
+		justify-content: center;
+		position: absolute;
+		right: calc(50% - 75px);
+		transform: translateY(-50%);
+		width: 65px;
+		z-index: 10;
+
+		@include rwd('laptop-s') {
+			height: 50px;
+			right: calc(50% - 55px);
+			width: 50px;
+
+			svg {
+				max-width: 20px;
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+@use '../settings' as *;
+
+@mixin tilesWidth($gap, $numberOfTiles) {
+	width: calc((100% - ($numberOfTiles - 1) * $gap) / $numberOfTiles);
+}
+
+@mixin tilesWidthCustom($gap, $numberOfTiles, $tileSize) {
+	width: calc(((100% - ($numberOfTiles - 1) * $gap) * $tileSize) / 100);
+}

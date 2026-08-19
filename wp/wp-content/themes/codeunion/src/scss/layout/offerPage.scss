@@ -1,0 +1,25 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.offer {
+	min-height: 600px;
+	padding-top: 60px;
+
+	&__breadcrumbs {
+		margin-bottom: 30px;
+
+		& .breadcrumbs__arrow {
+			& path {
+				fill: $c-black;
+			}
+		}
+	}
+
+	&__grid {
+		align-items: stretch;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: flex-start;
+	}
+}

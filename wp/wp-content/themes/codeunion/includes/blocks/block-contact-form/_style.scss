@@ -1,0 +1,143 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.contactForm {
+	&__wrapper {
+	}
+
+	&__helper {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 100px;
+
+		&--normal {
+		}
+
+		&--reverse {
+			flex-direction: row-reverse;
+		}
+
+		@include rwd('tablet-xm') {
+			gap: 50px;
+		}
+	}
+
+	&__content {
+		@include tilesWidth(100px, 2);
+
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+
+		@include rwd('tablet-xm') {
+			width: 100%;
+		}
+	}
+
+	&__contentBox {
+	}
+
+	&__heading {
+		color: $c-white;
+		font-family: $f-Mackinac;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__text {
+		@include textContent();
+		@include wysiwygContent();
+
+		color: $c-sec-text;
+		margin-top: 12px;
+		max-width: 400px;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		margin-top: 24px;
+	}
+
+	&__infoItem {
+		display: flex;
+		gap: 12px;
+	}
+
+	&__infoIcon {
+		width: 23px;
+	}
+
+	&__infoIconImage {
+		width: 23px;
+
+		& path {
+			fill: $c-white;
+		}
+	}
+
+	&__infoLink {
+		@include linkUnderline($c-white, $c-primary-hov);
+		@include fontSet(1.6rem, $fw-SemiBold, 2.4rem);
+
+		max-width: calc(100% - 23px - 12px);
+	}
+
+	&__infoText {
+		@include fontSet(1.6rem, $fw-SemiBold, 2.4rem);
+
+		color: $c-white;
+		width: calc(100% - 23px - 12px);
+	}
+
+	&__map {
+		& iframe {
+			aspect-ratio: 2 / 1.2;
+			border-radius: 12px;
+			display: block;
+			height: unset;
+			width: 100%;
+		}
+	}
+
+	&__form {
+		@include tilesWidth(100px, 2);
+
+		background: $c-primary;
+		border-radius: 12px;
+		padding: 30px;
+
+		@include rwd('tablet-xm') {
+			width: 100%;
+		}
+	}
+
+	&--default {
+		& .contactForm__text {
+			color: $c-pri-text;
+		}
+
+		& .contactForm__heading,
+		& .contactForm__infoText {
+			color: $c-black;
+		}
+
+		& .contactForm__infoLink {
+			@include linkUnderline($c-black, $c-primary-hov);
+		}
+
+		& .contactForm__infoIconImage {
+			& path {
+				fill: $c-black;
+			}
+		}
+	}
+
+	&--light {
+		background: $c-light;
+	}
+}

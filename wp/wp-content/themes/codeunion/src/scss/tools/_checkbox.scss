@@ -1,0 +1,139 @@
+@use '../settings' as *;
+
+@mixin checkbox(
+	$width: 20px,
+	$color: $c-white,
+	$borderColor: $c-white,
+	$background: $c-transparent,
+	$backgroundChecked: $c-transparent
+) {
+	$v-checkboxAfterWidth: calc(($width * 11) / 100);
+	$v-checkboxAfterWidth-2: calc($v-checkboxAfterWidth * 2);
+	$v-checkboxAfterWidth-3: calc($v-checkboxAfterWidth * 3);
+	$v-checkboxAfterWidth-4: calc($v-checkboxAfterWidth * 4);
+
+	aspect-ratio: 1 / 1;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	position: relative;
+	width: $width;
+
+	&:before {
+		aspect-ratio: 1 / 1;
+		background: $background;
+		border: 2px solid $borderColor;
+		content: '';
+		display: block;
+		width: $width;
+	}
+
+	&:focus {
+		&:before {
+			border: 2px solid $borderColor;
+		}
+	}
+
+	&:checked:before {
+		background: $backgroundChecked;
+		border-color: $borderColor;
+	}
+
+	&:disabled {
+		color: $c-black;
+		cursor: auto;
+	}
+
+	&:disabled:before {
+		background: $c-black;
+		box-shadow: none;
+	}
+
+	&:checked:after {
+		background: $color;
+		box-shadow:
+			$v-checkboxAfterWidth 0 0 $color,
+			$v-checkboxAfterWidth-2 0 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-2 * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-3 * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-4 * -1) 0 $color;
+		content: '';
+		height: $v-checkboxAfterWidth;
+		left: calc($width / 4.5);
+		position: absolute;
+		top: calc($width / 2.2);
+		transform: rotate(45deg);
+		width: $v-checkboxAfterWidth;
+	}
+}
+
+@mixin checkbox2(
+	$width: 20px,
+	$color: $c-white,
+	$borderColor: $c-white,
+	$background: $c-transparent,
+	$borderChecked: $c-white,
+	$backgroundChecked: $c-transparent
+) {
+	$v-checkboxAfterWidth: calc(($width * 11) / 100);
+	$v-checkboxAfterWidth-2: calc($v-checkboxAfterWidth * 2);
+	$v-checkboxAfterWidth-3: calc($v-checkboxAfterWidth * 3);
+	$v-checkboxAfterWidth-4: calc($v-checkboxAfterWidth * 4);
+
+	aspect-ratio: 1 / 1;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	position: relative;
+	width: $width;
+
+	&:before {
+		aspect-ratio: 1 / 1;
+		background: $background;
+		border: 1px solid $borderColor;
+		border-radius: 3px;
+		content: '';
+		display: block;
+		width: $width;
+	}
+
+	&:focus {
+		&:before {
+			border: 1px solid $borderColor;
+		}
+	}
+
+	&:checked:before {
+		background: $backgroundChecked;
+		border-color: $borderChecked;
+	}
+
+	&:disabled {
+		color: $c-black;
+		cursor: auto;
+	}
+
+	&:disabled:before {
+		background: $c-black;
+		box-shadow: none;
+	}
+
+	&:checked:after {
+		background: $color;
+		box-shadow:
+			$v-checkboxAfterWidth 0 0 $color,
+			$v-checkboxAfterWidth-2 0 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-2 * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-3 * -1) 0 $color,
+			$v-checkboxAfterWidth-2 calc($v-checkboxAfterWidth-4 * -1) 0 $color;
+		content: '';
+		height: $v-checkboxAfterWidth;
+		left: calc($width / 4.5);
+		position: absolute;
+		top: calc($width / 2.2);
+		transform: rotate(45deg);
+		width: $v-checkboxAfterWidth;
+	}
+}

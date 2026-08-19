@@ -1,0 +1,131 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.cta {
+	position: relative;
+
+	&__backgroundImage {
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 20;
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		color: $c-white;
+		font-family: $f-Mackinac;
+		position: relative;
+		text-align: center;
+		z-index: 60;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__text {
+		@include textContent();
+		@include wysiwygContent();
+
+		color: $c-sec-text;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 12px;
+		max-width: 80%;
+		position: relative;
+		text-align: center;
+		z-index: 60;
+	}
+
+	&__actions {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: center;
+		margin-top: 24px;
+		position: relative;
+		z-index: 60;
+	}
+
+	&__boxedHelper {
+		border-radius: 12px;
+		padding-bottom: 80px;
+		padding-top: 80px;
+		position: relative;
+
+		&--default {
+			& .cta__text {
+				color: $c-pri-text;
+			}
+
+			& .cta__heading {
+				color: $c-black;
+			}
+		}
+
+		&--img {
+			background: $c-black;
+		}
+
+		&--dark {
+			background: $c-dark;
+		}
+
+		&--primary {
+			background: $c-primary;
+		}
+
+		&--secondary {
+			background: $c-secondary;
+		}
+
+		&--tertiary {
+			background: $c-tertiary;
+		}
+	}
+
+	&--default {
+		& .cta__text {
+			color: $c-pri-text;
+		}
+
+		& .cta__heading {
+			color: $c-black;
+		}
+	}
+
+	&--boxed {
+		background: $c-white;
+	}
+
+	&--img {
+		background: $c-black;
+	}
+
+	&--dark {
+		background: $c-dark;
+	}
+
+	&--primary {
+		background: $c-primary;
+	}
+
+	&--secondary {
+		background: $c-secondary;
+	}
+
+	&--tertiary {
+		background: $c-tertiary;
+	}
+}

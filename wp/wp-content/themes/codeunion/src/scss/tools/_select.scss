@@ -1,0 +1,35 @@
+@use '../settings' as *;
+
+@mixin select($size: 140px, $border: 0) {
+	position: relative;
+
+	& select {
+		appearance: none;
+		background-color: $c-white;
+		border-radius: 5px;
+		cursor: pointer;
+		display: block;
+		padding: 12px 25px 12px 12px;
+		text-align: center;
+		width: $size;
+
+		@include fontSet(1.4rem, $fw-Bold, 1.4rem);
+
+		@if $border == 1 {
+			border: 2px solid $c-black;
+		}
+	}
+
+	& .selectIcon {
+		pointer-events: none;
+		position: absolute;
+		right: 10px;
+		top: 50%;
+
+		@include transform(translateY(-50%));
+
+		& svg {
+			width: 10px;
+		}
+	}
+}

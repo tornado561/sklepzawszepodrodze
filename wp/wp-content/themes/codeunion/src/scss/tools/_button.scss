@@ -1,0 +1,148 @@
+@use '../settings' as *;
+@use 'fontSet' as *;
+
+@mixin pillBtn() {
+	align-items: center;
+	background: $c-black;
+	border: 1px solid $c-transparent;
+	border-radius: 30px;
+	color: $c-white;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	padding: 12px 10px;
+	text-align: center;
+	transition: $tr-hover;
+	width: 100%;
+
+	@include fontSet(1.6rem, $fw-SemiBold, 2.4rem);
+
+	&:hover {
+		background: $c-primary;
+	}
+}
+
+@mixin btnNavTrigger() {
+	align-items: center;
+	border: 1px solid $c-sec-text;
+	border-radius: 8px;
+	cursor: pointer;
+	display: inline-flex;
+	height: 45px;
+	justify-content: center;
+	transition: $tr-hover;
+	width: 45px;
+
+	&:hover {
+		& svg {
+			& path {
+				fill: $c-primary;
+			}
+		}
+	}
+
+	&:focus-visible {
+		border-color: $c-focus;
+	}
+}
+
+.button {
+	align-items: center;
+	background: $c-white;
+	border: 1px solid $c-transparent;
+	border-radius: 8px;
+	color: $c-pri-text;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	min-width: 120px;
+	padding: 12px 20px;
+	text-align: center;
+	transition: $tr-hover;
+	width: auto;
+
+	@include fontSet(1.4rem, $fw-Regular, 2rem);
+
+	&:hover {
+		background: $c-tertiary;
+	}
+
+	&:focus-visible {
+		border-color: $c-focus;
+	}
+
+	&:disabled {
+		background: $c-black-20;
+		color: $c-white;
+		cursor: not-allowed;
+
+		&:hover {
+			background: $c-black-20;
+			color: $c-white;
+		}
+	}
+
+	&--primary {
+		background: $c-primary;
+		color: $c-white;
+		font-weight: $fw-Bold;
+
+		&:hover {
+			background: $c-primary-hov;
+		}
+
+		&:disabled {
+			background: $c-primary-disabled;
+
+			&:hover {
+				background: $c-primary-disabled;
+			}
+		}
+	}
+
+	&--secondary {
+		background: $c-secondary;
+
+		&:hover {
+			background: $c-secondary-hov;
+		}
+
+		&:disabled {
+			background: $c-secondary-disabled;
+
+			&:hover {
+				background: $c-secondary-disabled;
+			}
+		}
+	}
+
+	&--tertiary {
+		background: $c-tertiary;
+
+		&:hover {
+			background: $c-tertiary-hov;
+		}
+
+		&:disabled {
+			background: $c-tertiary-disabled;
+
+			&:hover {
+				background: $c-tertiary-disabled;
+			}
+		}
+	}
+
+	&--default {
+	}
+
+	&--full {
+		width: 100%;
+	}
+}
+
+/*
+primary : Primary
+secondary : Secondary
+tertiary : Tertiary
+default : Default
+*/

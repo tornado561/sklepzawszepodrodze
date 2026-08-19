@@ -1,0 +1,35 @@
+@use '../settings' as *;
+
+@mixin customFullWidthGrid($size, $alignment) {
+	width: calc($size * 1%);
+
+	@if $alignment == 'left' {
+		padding-left: $gridGutter;
+	}
+
+ @else {
+		padding-right: $gridGutter;
+	}
+
+	@media only screen and (min-width: 1601px) {
+		width: calc((100% - $gridWidth) / 2 + $gridGutter + ($gridWidth * $size / 100));
+
+		@if $alignment == 'left' {
+			padding-left: calc((100% - $gridWidth) / 2 + $gridGutter);
+		}
+
+ @else {
+			padding-right: calc((100% - $gridWidth) / 2 + $gridGutter);
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
+		@if $alignment == 'left' {
+			padding-left: calc($gridGutter / 2);
+		}
+
+ @else {
+			padding-right: calc($gridGutter / 2);
+		}
+	}
+}

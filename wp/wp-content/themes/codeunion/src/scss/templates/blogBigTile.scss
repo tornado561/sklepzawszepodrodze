@@ -1,0 +1,113 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+.blogBigTile {
+	background: $c-primary;
+	padding-bottom: 30px;
+	padding-top: 10px;
+	position: relative;
+
+	&__layer {
+		background: $c-white;
+		bottom: 0;
+		height: 50%;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 20;
+	}
+
+	&__wrapper {
+	}
+
+	&__helper {
+		position: relative;
+		z-index: 50;
+	}
+
+	&__itemThumbnail {
+		@include tilesWidthCustom(50px, 2, 50);
+
+		aspect-ratio: 4 / 2.5;
+		border-radius: 12px;
+		overflow: hidden;
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__itemThumbnailImage {
+		height: 100%;
+		object-fit: cover;
+		transition: $tr-hover;
+		width: 100%;
+	}
+
+	&__itemContent {
+		@include tilesWidthCustom(50px, 2, 50);
+
+		@include rwd('tablet') {
+			width: 100%;
+		}
+	}
+
+	&__itemCategory {
+		margin-bottom: 12px;
+		text-transform: uppercase;
+
+		@include fontSet(1.4rem, $fw-Bold, 1.4rem);
+	}
+
+	&__itemTitle {
+		margin-bottom: 12px;
+	}
+
+	&__itemTitleText {
+		@include fontSet(3rem, $fw-Bold, 3.8rem);
+
+		@include rwd('tablet-xl') {
+			@include fontSet(2.4rem, $fw-Bold, 2.8rem);
+		}
+	}
+
+	&__itemText {
+		@include textContent();
+		@include lineClamp(3);
+	}
+
+	&__itemDate {
+		@include fontSet(1.4rem, $fw-Bold, 1.4rem);
+
+		margin-top: 12px;
+	}
+
+	&__item {
+		align-items: center;
+		background: $c-white;
+		border: 1px solid $c-light-02;
+		border-radius: 12px;
+		display: flex;
+		gap: 50px;
+		padding: 40px;
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+
+		&:hover {
+			& .blogBigTile__itemThumbnailImage {
+				@include transform(scale(1.05));
+			}
+
+			& .blogBigTile__itemTitle {
+				color: $c-primary;
+			}
+		}
+
+		@include rwd('tablet') {
+			flex-wrap: wrap;
+			padding: 20px;
+		}
+	}
+}

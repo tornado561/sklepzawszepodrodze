@@ -1,0 +1,67 @@
+@use '../settings' as *;
+@use 'rwd' as *;
+@use 'fontSet' as *;
+
+@mixin heading() {
+	@include fontSet(4rem, $fw-ExtraBold, 4.8rem);
+
+	@include rwd('tablet') {
+		@include fontSet(3.5rem, $fw-ExtraBold, 4.3rem);
+	}
+
+	@include rwd('phone-xxl') {
+		@include fontSet(3rem, $fw-ExtraBold, 3.8rem);
+	}
+}
+
+@mixin heroHeading() {
+	@include fontSet(5rem, $fw-ExtraBold, 6rem);
+
+	@include rwd('laptop') {
+		@include fontSet(3.6rem, $fw-ExtraBold, 4.4rem);
+	}
+
+	@include rwd('phone-xxl') {
+		@include fontSet(2.6rem, $fw-ExtraBold, 4.2rem);
+	}
+}
+
+@mixin headingMedium() {
+	@include fontSet(3.5rem, $fw-Regular, 4.2rem);
+
+	@include rwd('laptop') {
+		@include fontSet(3rem, $fw-Regular, 3.6rem);
+	}
+}
+
+@mixin headingSubSections() {
+	@include fontSet(3.5rem, $fw-Bold, 4.2rem);
+
+	@include rwd('laptop') {
+		@include fontSet(3rem, $fw-Bold, 3.6rem);
+	}
+}
+
+@mixin heroSubHeading() {
+	@include fontSet(2.4rem, $fw-Bold, 3.2rem);
+
+	@include rwd('laptop') {
+		@include fontSet(2rem, $fw-Bold, 2.7rem);
+	}
+}
+
+@mixin textContent() {
+	@include fontSet(1.6rem, $fw-Regular, 2.4rem);
+}
+
+@mixin tileTitle() {
+	@include fontSet(1.8rem, $fw-Bold, 2.4rem);
+}
+
+@mixin headingSmall() {
+	@include fontSet(2.5rem, $fw-SemiBold, 3.2rem);
+}
+
+@mixin headingExtraSmall() {
+	@include fontSet(2.1rem, $fw-SemiBold, 2.8rem);
+}

@@ -1,0 +1,40 @@
+@use '../settings' as *;
+@use '../tools' as *;
+
+$gridWidth: 1200px !default;
+$gridWidthFluid: 1360px !default;
+$gridWidthSmall: 1000px !default;
+$gridGutter: 20px !default;
+$rtlActive: false !default;
+
+.container {
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $gridWidth;
+	padding-left: $gridGutter;
+	padding-right: $gridGutter;
+	width: 100%;
+
+	&:before,
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+
+	&--fluid {
+		max-width: $gridWidthFluid;
+	}
+
+	&--small {
+		max-width: $gridWidthSmall;
+	}
+
+	@include rwd('tablet-l') {
+		max-width: 100%;
+		padding-left: calc($gridGutter / 2);
+		padding-right: calc($gridGutter / 2);
+		width: 100%;
+	}
+}

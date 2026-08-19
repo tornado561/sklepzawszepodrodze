@@ -1,0 +1,117 @@
+@use '../../../src/scss/settings' as *;
+@use '../../../src/scss/tools' as *;
+
+.gallery {
+	background: $c-white;
+
+	&__wrapper {
+	}
+
+	&__helper {
+	}
+
+	&__heading {
+		font-family: $f-Mackinac;
+		text-align: center;
+	}
+
+	&__headingItem {
+		@include heading();
+	}
+
+	&__items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-top: 60px;
+	}
+
+	&__item {
+		aspect-ratio: 6 / 5;
+		border-radius: 8px;
+		display: block;
+		overflow: hidden;
+		position: relative;
+
+		&--46 {
+			aspect-ratio: 6 / 6.5;
+		}
+
+		&--26 {
+			aspect-ratio: 6 / 3.5;
+		}
+	}
+
+	&__itemsCol {
+		@include tilesWidth(20px, 3);
+
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		@include rwd('tablet') {
+			@include tilesWidth(20px, 2);
+		}
+
+		&--break {
+			@include rwd('tablet') {
+				flex-direction: row;
+				width: 100%;
+			}
+
+			& .gallery__item {
+				@include rwd('tablet') {
+					@include tilesWidth(20px, 2);
+
+					aspect-ratio: 6 / 5;
+				}
+			}
+		}
+	}
+
+	&__itemImage {
+		height: 100%;
+		object-fit: cover;
+		position: relative;
+		width: 100%;
+		z-index: 20;
+	}
+
+	&__itemLink {
+		align-items: center;
+		aspect-ratio: 1 / 1;
+		background: $c-white-40;
+		border: 1px solid $c-transparent;
+		border-radius: 8px;
+		bottom: 10px;
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		right: 10px;
+		transition: $tr-hover;
+		width: 50px;
+		z-index: 50;
+
+		&:hover {
+			background: $c-primary;
+		}
+
+		&:focus-visible {
+			border-color: $c-focus;
+		}
+	}
+
+	&__itemLinkIcon {
+		& img,
+		& svg {
+			width: 25px;
+		}
+	}
+
+	&--default {
+	}
+
+	&--light {
+		background: $c-light;
+	}
+}
