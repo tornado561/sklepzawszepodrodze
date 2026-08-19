@@ -45,9 +45,14 @@ if (isset($block) || isset($args)) :
 				   preload="metadata"
 				   poster="<?= $theme_uri ?>/public/video/hero-poster.jpg"
 				   aria-hidden="true"
-				   data-hero-video>
-				<source src="<?= $theme_uri ?>/public/video/hero-bg.webm" type="video/webm">
-				<source src="<?= $theme_uri ?>/public/video/hero-bg.mp4" type="video/mp4">
+				   data-hero-video
+				   data-poster-portrait="<?= $theme_uri ?>/public/video/hero-poster-portrait.jpg">
+				<source src="<?= $theme_uri ?>/public/video/hero-bg.webm"
+						type="video/webm"
+						data-src-portrait="<?= $theme_uri ?>/public/video/hero-bg-portrait.webm">
+				<source src="<?= $theme_uri ?>/public/video/hero-bg.mp4"
+						type="video/mp4"
+						data-src-portrait="<?= $theme_uri ?>/public/video/hero-bg-portrait.mp4">
 			</video>
 
 			<div class="hero__wrapper container">
