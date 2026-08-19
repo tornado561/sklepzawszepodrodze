@@ -2,14 +2,32 @@
 @use '../../../src/scss/tools' as *;
 
 .hero {
-	padding-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	// 80px = fixed .header height (+ .headerSeparate spacer above the section)
+	min-height: calc(100vh - 80px);
+	min-height: calc(100svh - 80px);
+	overflow: hidden;
 	position: relative;
 
-	&__backgroundImage {
+	// Bottom scrim keeps the CTA buttons readable on top of the video
+	&:after {
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%);
+		content: '';
+		height: 100%;
+		left: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 30;
+	}
+
+	&__video {
 		height: 100%;
 		left: 0;
 		object-fit: cover;
-		opacity: 0.5;
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -17,94 +35,36 @@
 	}
 
 	&__wrapper {
-	}
-
-	&__helper {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: 50px;
-		margin: 0 auto;
-		max-width: 1024px;
 		position: relative;
+		width: 100%;
 		z-index: 50;
-
-		@include rwd('tablet') {
-			gap: 25px;
-		}
-
-		&--normal {
-		}
-
-		&--reverse {
-			flex-direction: row-reverse;
-		}
 	}
 
 	&__content {
-		@include tilesWidthCustom(25px, 2, 100);
-
-		text-align: center;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 50px;
 
 		@include rwd('tablet') {
-			width: 100%;
+			padding-bottom: 35px;
 		}
 	}
 
-	&__heading {
-		font-family: $f-Mackinac;
-	}
-
-	&__headingItem {
-		b {
-			padding: 0 4px 0 2px;
-			position: relative;
-			z-index: 1;
-
-			&:after {
-				background-image: url('../../../public/img/icons/underline-icon.svg');
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				bottom: 4px;
-				content: '';
-				display: block;
-				height: 12px;
-				position: absolute;
-				right: 0;
-				width: 200px;
-				z-index: -1;
-
-				@include rwd('laptop') {
-					bottom: 0;
-					height: 11px;
-					left: 0;
-					right: auto;
-					width: 140px;
-				}
-
-				@include rwd('phone-xxl') {
-					bottom: -4px;
-					height: 11px;
-					left: 0;
-					right: auto;
-					width: 100px;
-				}
-
-				@include rwd('phone') {
-					display: none;
-				}
-			}
-		}
-
-		@include heroHeading();
-	}
-
+	// Heading and text stay in the DOM for SEO and screen readers only —
+	// the video carries its own burned-in messaging.
+	&__heading,
 	&__text {
-		margin-top: 24px;
-
-		@include textContent();
-		@include wysiwygContent();
+		border: 0;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
 	}
 
 	&__actions {
@@ -113,152 +73,5 @@
 		flex-wrap: wrap;
 		gap: 20px;
 		justify-content: center;
-		margin-top: 24px;
-	}
-
-	&__slider {
-		max-width: 1024px;
-		position: relative;
-	}
-
-	&__slide {
-		img {
-			border-radius: 16px;
-			height: auto;
-			max-height: 500px;
-			object-fit: cover;
-			object-position: center;
-			width: 100%;
-		}
-	}
-
-	&__prev {
-		align-items: center;
-		background-color: $c-secondary;
-		border-radius: 5px;
-		display: flex;
-		height: 65px;
-		justify-content: center;
-		left: -35px;
-		position: absolute;
-		top: 60%;
-		transform: translateY(-50%);
-		width: 65px;
-		z-index: 10;
-
-		@include rwd('laptop-s') {
-			height: 50px;
-			left: -20px;
-			width: 50px;
-
-			svg {
-				max-width: 20px;
-			}
-		}
-
-		@include rwd('tablet-s') {
-			display: none;
-		}
-	}
-
-	&__next {
-		align-items: center;
-		background-color: $c-secondary;
-		border-radius: 5px;
-		display: flex;
-		height: 65px;
-		justify-content: center;
-		position: absolute;
-		right: -35px;
-		top: 60%;
-		transform: translateY(-50%);
-		width: 65px;
-		z-index: 10;
-
-		@include rwd('laptop-s') {
-			height: 50px;
-			right: -20px;
-			width: 50px;
-
-			svg {
-				max-width: 20px;
-			}
-		}
-
-		@include rwd('tablet') {
-			display: none;
-		}
-	}
-
-	&__dots {
-		align-items: center;
-		bottom: 80px;
-		display: flex;
-		gap: 15px;
-		justify-content: center;
-		position: absolute;
-
-		@include rwd('tablet') {
-			bottom: 35px;
-		}
-	}
-
-	.dot {
-		background-color: rgba(255, 255, 255, 0.7);
-		border-radius: 3px;
-		cursor: pointer;
-		height: 14px;
-		transition: all 0.3s ease-in-out;
-		width: 14px;
-
-		&--active {
-			background-color: rgba(211, 226, 109, 1);
-		}
-	}
-
-	&__image {
-		@include tilesWidthCustom(50px, 2, 50);
-
-		@include rwd('tablet') {
-			width: 100%;
-		}
-	}
-
-	&__imageItem {
-		border-radius: 12px;
-		width: 100%;
-
-		&--desktop {
-			@include rwd('tablet-s') {
-				display: none;
-			}
-		}
-
-		&--mobile {
-			display: none;
-
-			@include rwd('tablet-s') {
-				display: block;
-			}
-		}
-	}
-
-	&--default {
-		& .hero__subHeading,
-		& .hero__text {
-			color: $c-pri-text;
-		}
-
-		& .hero__heading {
-			color: $c-black;
-		}
-	}
-
-	&--img {
-		background: $c-black;
-	}
-
-	&--light {
-		background: $c-light;
 	}
 }
